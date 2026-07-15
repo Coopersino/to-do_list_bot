@@ -1,31 +1,28 @@
-# Telegram bot for Railway
+# Telegram Task Bot for Railway
 
-Минимальный Telegram-бот на Node.js и grammY.
+Бот создаёт задачи, хранит их на Railway Volume и отправляет повторяющиеся напоминания, пока задача не завершена или не отменена.
 
-## Возможности
+## Команды
 
-- `/start`
-- `/help`
-- `/ping`
-- ответ на любое текстовое сообщение
-- корректная остановка при перезапуске Railway
+- `/newtask` — создать задачу
+- `/tasks` — показать задачи
+- `/cancel` — прервать создание
+- `/help` — помощь
+- `/ping` — проверка работы
 
-## Локальный запуск
+## Переменные Railway
+
+- `BOT_TOKEN` — токен от BotFather
+- `DATA_DIR=/data`
+- `UTC_OFFSET_HOURS=3` — часовой пояс для вводимых дат
+
+## Обязательный Railway Volume
+
+Добавьте Volume к сервису и укажите Mount Path `/data`. Без Volume файл задач может быть потерян после нового деплоя или перезапуска контейнера.
+
+## Запуск
 
 ```bash
-npm install
-cp .env.example .env
-export BOT_TOKEN="токен_из_BotFather"
+npm ci
 npm start
 ```
-
-## Развёртывание на Railway
-
-1. Загрузите проект в GitHub.
-2. В Railway создайте `New Project` → `Deploy from GitHub repo`.
-3. Выберите репозиторий.
-4. Откройте сервис → `Variables` и добавьте `BOT_TOKEN`.
-5. Railway автоматически выполнит `npm install` и `npm start`.
-6. В логах должна появиться строка `@имя_бота is running`.
-
-Публичный домен не нужен: бот использует Telegram long polling.

@@ -1,28 +1,31 @@
-# Telegram Task Bot for Railway
+# Telegram Task & Fitness Bot for Railway
 
-Бот создаёт задачи, хранит их на Railway Volume и отправляет повторяющиеся напоминания, пока задача не завершена или не отменена.
+Бот хранит задачи, напоминает о них, импортирует расписание из JSON и ведёт дневник тренировок, питания и веса.
 
 ## Команды
 
-- `/newtask` — создать задачу
-- `/tasks` — показать задачи
-- `/cancel` — прервать создание
-- `/help` — помощь
-- `/ping` — проверка работы
+- `/newtask` — создать задачу вручную
+- `/import` — получить формат массовой загрузки; затем отправить `.json`
+- `/tasks` — все задачи
+- `/week` — задачи текущей календарной недели
+- `/month` — задачи текущего месяца
+- `/quarter` — задачи текущего квартала
+- `/progress` — добавить запись дневника
+- `/diary` — последние 14 записей
+- `/cancel` — отменить текущий ввод
 
-## Переменные Railway
+## Railway Variables
 
-- `BOT_TOKEN` — токен от BotFather
-- `DATA_DIR=/data`
-- `UTC_OFFSET_HOURS=3` — часовой пояс для вводимых дат
-
-## Обязательный Railway Volume
-
-Добавьте Volume к сервису и укажите Mount Path `/data`. Без Volume файл задач может быть потерян после нового деплоя или перезапуска контейнера.
-
-## Запуск
-
-```bash
-npm ci
-npm start
+```text
+BOT_TOKEN=...
+DATA_DIR=/data
+UTC_OFFSET_HOURS=3
 ```
+
+Подключите Railway Volume к `/data`, иначе данные могут исчезнуть при новом деплое.
+
+## Формат JSON
+
+См. `tasks-example.json`. Дата строго: `ДД.ММ.ГГГГ ЧЧ:ММ`.
+Допустимые состояния: `in_progress`, `completed`, `canceled`.
+Рекомендуемые категории: `workout`, `nutrition`, `measurement`, `recovery`, `general`.

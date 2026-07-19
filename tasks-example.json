@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Кардио: ходьба 45 минут",
+    "status": "Неделя 1",
+    "category": "workout",
+    "state": "in_progress",
+    "deadline": "20.07.2026 19:00",
+    "reminderMinutes": 120
+  },
+  {
+    "title": "Соблюсти рацион 2300 ккал",
+    "status": "Белок не менее 150 г",
+    "category": "nutrition",
+    "state": "in_progress",
+    "deadline": "20.07.2026 21:00",
+    "reminderMinutes": 180
+  },
+  {
+    "title": "Утреннее взвешивание",
+    "status": "Записать вес в дневник",
+    "category": "measurement",
+    "state": "in_progress",
+    "deadline": "21.07.2026 08:00",
+    "reminderMinutes": 30
+  }
+]
